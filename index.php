@@ -1,10 +1,9 @@
+
 <?php
+require 'vendor/autoload.php';
+$database = require 'core/bootstrap.php';
 
-
-require 'core/bootstrap.php';
-
-
-// var_dump(Request::uri());
-
+// Load routes into a router instance, and then direct traffic to
+// the controllers associated with a URI based on the request method:
 require Router::load('routes.php')
-    ->direct(Request::uri());
+    ->direct(Request::uri(), Request::method());
